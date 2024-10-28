@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="VisStatsBL.Model.Haven">
+    <Position X="14" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAABAAAAAQAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Model\Haven.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisStatsBL.Model.VisSoort">
+    <Position X="4.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAABAAAAAQAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Model\VisSoort.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VisStatsBL.Managers.VisStatsManager">
+    <Position X="0.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAgAgAAAAAIAABAAAAIAAIAAJAAAAAAAAEAAACJA=</HashCode>
+      <FileName>Managers\VisStatsManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
