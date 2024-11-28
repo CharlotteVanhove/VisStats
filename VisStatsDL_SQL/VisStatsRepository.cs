@@ -17,7 +17,7 @@ namespace VisStatsDL_SQL {
             this.connectionString = connectionString; //geeft de connectiestring de waarde van de parameter
         }
         public VisStatsRepository() { //constructor
-            this.connectionString = @"Data Source=LAPTOP-CM41NEGJ\SQLEXPRESS04;Initial Catalog=VisStats;Integrated Security=True;TrustServerCertificate=True"; //geeft de connectiestring de waarde van de parameter
+            connectionString = @"Data Source = MSI\SQLEXPRESS;Initial Catalog = VisStats; Integrated Security = True; Trust Server Certificate=True"; // de connectiestring wordt geinitialiseerd
         }
         public bool HeeftVissoort(VisSoort visSoort) { //controleert of een vissoort al bestaat in de databank
             string SQL = "SELECT COUNT(*) FROM VisSoort WHERE naam = @naam"; //telt het aantal rijen met de naam van de vissoort
@@ -72,7 +72,7 @@ namespace VisStatsDL_SQL {
             }
         }
         public List<Haven> LeesHavens() { //leest de havens uit de databank
-            string SQL = "SELECT * FROM Havens"; //selecteert de naam van de havens
+            string SQL = "SELECT * FROM Haven"; //selecteert de naam van de havens
             List<Haven> havens = new List<Haven>(); //maakt een lijst aan voor de vissoorten
             using (SqlConnection conn = new SqlConnection(connectionString))
             using (SqlCommand cmd = conn.CreateCommand()) {
@@ -91,7 +91,7 @@ namespace VisStatsDL_SQL {
             }
         }
         public List<VisSoort> LeesSoorten() { //leest de soorten uit de databank
-            string SQL = "SELECT * FROM VisSoort"; //selecteert de naam van de vissoorten
+            string SQL = "SELECT * FROM soort"; //selecteert de naam van de vissoorten
             List<VisSoort> soorten = new List<VisSoort>(); //maakt een lijst aan voor de vissoorten
             using (SqlConnection conn = new SqlConnection(connectionString))
             using (SqlCommand cmd = conn.CreateCommand()) {
@@ -244,7 +244,7 @@ namespace VisStatsDL_SQL {
                 case Eenheid.kg: kolom = "gewicht"; break;
                 case Eenheid.euro: kolom = "waarde"; break;
             }
-            string SQL = $"SELECT jaar, maand, SUM({kolom}) totaal, MIN({kolom}) minimum, MAX({kolom}) maximum, AVG({kolom}) gemiddelde FROM VisStats t1 left JOIN Havens t2 ON t1.haven_id = t2.id WHERE soort_id = @soort_id AND haven_id IN (SELECT id FROM Havens) GROUP BY jaar, maand";
+            string SQL = $"SELECT jaar, maand, SUM({kolom}) totaal, MIN({kolom}) minimum, MAX({kolom}) maximum, AVG({kolom}) gemiddelde FROM VisStats t1 left JOIN Haven t2 ON t1.haven_id = t2.id WHERE soort_id = @soort_id AND haven_id IN (SELECT id FROM Haven) GROUP BY jaar, maand";
             List<MaandVangst> vangsten = new();
             using (SqlConnection conn = new SqlConnection(connectionString))
             using (SqlCommand cmd = conn.CreateCommand()) {
